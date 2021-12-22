@@ -1,0 +1,16 @@
+dist:
+  otelcol_version: "0.41.0"
+  name: occamshub-otel-distr
+  description: "Occamshub's OpenTelemetry Collector distribution"
+receivers:
+  - gomod: "github.com/open-telemetry/opentelemetry-collector-contrib/receiver/filelogreceiver v0.41.0"
+  - gomod: "github.com/open-telemetry/opentelemetry-collector-contrib/receiver/prometheusreceiver v0.41.0"
+  - gomod: "github.com/open-telemetry/opentelemetry-collector-contrib/receiver/hostmetricsreceiver v0.41.0"
+  - gomod: "github.com/open-telemetry/opentelemetry-collector-contrib/receiver/dockerstatsreceiver v0.41.0"
+  - gomod: "github.com/occamshub-dev/opentelemetry-contrib/receiver/grypereceiver v0.1.0"
+exporters:
+  - gomod: "github.com/open-telemetry/opentelemetry-collector-contrib/exporter/fileexporter v0.41.0"
+  - gomod: "github.com/open-telemetry/opentelemetry-collector-contrib/exporter/kafkaexporter v0.41.0"
+processors:
+  - gomod: "github.com/open-telemetry/opentelemetry-collector-contrib/processor/attributesprocessor v0.41.0"
+  - gomod: "github.com/open-telemetry/opentelemetry-collector-contrib/processor/resourcedetectionprocessor v0.41.0"
