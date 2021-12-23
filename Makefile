@@ -1,5 +1,5 @@
 SHELL := /bin/bash
-IMAGE_NAME ?= ccamshub/occamshub-otel-distr
+IMAGE_NAME ?= occamshub/occamshub-otel-distr
 
 .PHONY: all
 all: build
