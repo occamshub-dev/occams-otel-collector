@@ -11,8 +11,9 @@ the distribution.
 
 ## Pre-requisites
 
- * Go ([Go website](https://go.dev))
- * Make ([Make website](https://www.gnu.org/software/make/))
+ * [Go](https://go.dev)
+ * [Make](https://www.gnu.org/software/make/)
+ * [Docker](https://www.docker.com/) (Optional: build docker image)
 
 ## Build binary
 
