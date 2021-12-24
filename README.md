@@ -1,5 +1,7 @@
 # Occamshub OpenTelemetry Collector distribution
 
+![Occamshub logo](assets/otel_occams_hub_black_horizontal.png)
+
 ## Overview
 
 An __OpenTelemetry__ distribution,  not to be confused with a fork, is customized
@@ -12,9 +14,27 @@ other users too.
 
 It also contains the essential tools and files to build the Occamshub distribution.
 
-## Usage
+## Download
 
-To use this distribution, 
+To download the binary, please go to [Releases](https://github.com/occamshub-dev/occamshub-otel-distr/releases)
+page and download the latest version.
+
+## Configuration
+
+We provide a [sample configuration file](otel.yaml) for reference. If you want to
+know more about how to configure the __Collector__, please, visit [Collector Docs](https://opentelemetry.io/docs/collector/).
+
+If you want to see all configuration options for __Occamshub__ components, please go
+to [Components](#Components)
+
+## Run
+
+To start the collector, just provide the configuration file as a parameter, as in the
+example below.
+
+```bash
+./occamshub-otel-distr --config otel.yaml
+```
 
 ## Components
 
@@ -30,7 +50,7 @@ To use this distribution,
 
  > No exporters yet
 
-## Build
+## Build your own
 
 See [otelcol-builder.yaml](otelcol-builder.yaml) file to know which components are
 included by default. If you want to include or exclude other components, edit the
@@ -62,6 +82,11 @@ IMAGE_NAME=occamshub-otelcol make image
 ```
 
 You can change the image name to whatever you want.
+
+## Useful links
+
+* [OpenTelemetry Collector @ github.com](https://github.com/open-telemetry/opentelemetry-collector)
+* [OpenTelemetry Collector Contrib @ github.com](https://github.com/open-telemetry/opentelemetry-collector-contrib)
 
 ## License
 

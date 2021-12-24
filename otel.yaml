@@ -1,0 +1,21 @@
+receivers:
+  grype:
+    include: [ /opt ]
+    collection_interval: 10m
+
+processors:
+  resourcedetection:
+    detectors: [ system, env ]
+    timeout: 60s
+    override: true
+
+exporters:
+  logging:
+    loglevel: debug
+
+service:
+  pipelines:
+    metrics:
+      receivers: [grype]
+      processors: [resourcedetection]
+      exporters: [logging]
