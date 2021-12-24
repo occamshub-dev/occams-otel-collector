@@ -1,13 +1,40 @@
 # Occamshub OpenTelemetry Collector distribution
 
-This repository contains the essentials to build the Occamshub distribution. With
-this repo, you can build or even extend for your specific needs.
+## Overview
 
-## Which components are included?
+An __OpenTelemetry__ distribution,  not to be confused with a fork, is customized
+version of an __OpenTelemetry__ component. A distribution is a wrapper around an
+upstream __OpenTelemetry__ repository with some customizations.
+
+This is a repository for these customizations. These contributions are
+specifically developed for __Occamshub__ use cases and could be useful to 
+other users too.
+
+It also contains the essential tools and files to build the Occamshub distribution.
+
+## Usage
+
+To use this distribution, 
+
+## Components
+
+### Receivers
+
+ * [Grype](receiver/grypereceiver) (`metrics`), vulnerability scanner.
+
+### Processors
+
+ > No processors yet
+
+### Exporters
+
+ > No exporters yet
+
+## Build
 
 See [otelcol-builder.yaml](otelcol-builder.yaml) file to know which components are
-included by default. If you want to include other components, edit the file and rebuild
-the distribution.
+included by default. If you want to include or exclude other components, edit the
+file and rebuild the distribution.
 
 ## Pre-requisites
 

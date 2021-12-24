@@ -1,0 +1,16 @@
+receivers:
+  grype:
+    include: [ /opt ]
+
+processors:
+  nop:
+
+exporters:
+  nop:
+
+service:
+  pipelines:
+    metrics:
+      receivers: [grype]
+      processors: [nop]
+      exporters: [nop]

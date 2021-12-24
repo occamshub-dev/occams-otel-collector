@@ -9,7 +9,7 @@ receivers:
   - gomod: "github.com/open-telemetry/opentelemetry-collector-contrib/receiver/hostmetricsreceiver v0.41.0"
   - gomod: "github.com/open-telemetry/opentelemetry-collector-contrib/receiver/dockerstatsreceiver v0.41.0"
   # Occamshub
-  - gomod: "github.com/occamshub-dev/opentelemetry-contrib/receiver/grypereceiver v0.1.0"
+  - gomod: "github.com/occamshub-dev/occamshub-otel-distr/receiver/grypereceiver v0.1.0"
 processors:
   # Contrib
   - gomod: "github.com/open-telemetry/opentelemetry-collector-contrib/processor/attributesprocessor v0.41.0"
