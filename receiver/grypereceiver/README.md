@@ -66,6 +66,7 @@ Value: 1
 
 ### Optional
 
+ * `exclude`: (default = `[]`): List of paths to exclude (relative to include)
  * `collection_interval` (default = `24h`): Scan for vulnerabilities on this interval.
 
 ### Example
