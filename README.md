@@ -61,13 +61,13 @@ See [otelcol-builder.yaml](otelcol-builder.yaml) file to know which components a
 included by default. If you want to include or exclude other components, edit the
 file and rebuild the distribution.
 
-## Pre-requisites
+### Pre-requisites
 
  * [Go](https://go.dev)
  * [Make](https://www.gnu.org/software/make/)
  * [Docker](https://www.docker.com/) (Optional: build docker image)
 
-## Build binary
+### Build binary
 
 In order to build the OTEL Collector executable, just run this command:
 
@@ -77,7 +77,7 @@ make all
 
 You will find generated source code and the binary in the `build` path.
 
-## Build docker image
+### Build docker image
 
 To create a docker image compatible with official OpenTelemetry images,
 run this command:
