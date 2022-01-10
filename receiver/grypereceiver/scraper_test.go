@@ -18,6 +18,7 @@ import (
 	"context"
 	"github.com/stretchr/testify/require"
 	"go.opentelemetry.io/collector/component/componenttest"
+	"go.opentelemetry.io/collector/model/pdata"
 	"go.uber.org/zap"
 	"testing"
 )
@@ -32,7 +33,14 @@ func TestScraper(t *testing.T) {
 	err := scraper.Start(context.Background(), componenttest.NewNopHost())
 	require.NoError(t, err)
 
-	metrics, scrapeErr := scraper.Scrape(context.Background())
+	var metrics pdata.Metrics
+	var scrapeErr error
+
+	metrics, scrapeErr = scraper.Scrape(context.Background())
+	require.NoError(t, scrapeErr)
+	require.NotNil(t, metrics)
+
+	metrics, scrapeErr = scraper.Scrape(context.Background())
 	require.NoError(t, scrapeErr)
 	require.NotNil(t, metrics)
 }
