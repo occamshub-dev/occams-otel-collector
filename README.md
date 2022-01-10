@@ -19,54 +19,13 @@ It also contains the essential tools and files to build the Occamshub distributi
  * Receivers
    * [grype](receiver/grypereceiver) (vulnerability scanner)
 
-## Receivers
+## Components
 
 ### Grype
 
-[Grype](https://github.com/anchore/grype) is an _Open Source_ vulnerability scanner
-for container images and filesystems written in _Go_. It works with [Syft](https://github.com/anchore/syft),
-the powerful SBOM tool.
-
-## Processors
-
- > No processors yet
-
-## Exporters
-
- > No exporters yet
-
-## Build your own
-
-See [otelcol-builder.yaml](otelcol-builder.yaml) file to know which components are
-included by default. If you want to include or exclude other components, edit the
-file and rebuild the distribution.
-
-### Pre-requisites
-
- * [Go](https://go.dev)
- * [Make](https://www.gnu.org/software/make/)
- * [Docker](https://www.docker.com/) (Optional: build docker image)
-
-### Build binary
-
-In order to build the OTEL Collector executable, just run this command:
-
-```bash
-make all
-```
-
-You will find generated source code and the binary in the `build` path.
-
-### Build docker image
-
-To create a docker image compatible with official OpenTelemetry images,
-run this command:
-
-```bash
-IMAGE_NAME=occamshub-otelcol make image
-```
-
-You can change the image name to whatever you want.
+[Grype receiver](receiver/grypereceiver) integrates [Grype](https://github.com/anchore/grype),
+an _Open Source_ vulnerability scanner for container images and filesystems written in _Go_.
+It works with [Syft](https://github.com/anchore/syft), the powerful SBOM tool.
 
 ## Usage
 
@@ -93,6 +52,39 @@ example below.
 ```bash
 ./occamshub-otel-distr --config otel.yaml
 ```
+
+## Build your own
+
+See [otelcol-builder.yaml](otelcol-builder.yaml) file to know which components are
+included by default. If you want to include or exclude other components, edit the
+file and rebuild the distribution.
+
+### Pre-requisites
+
+* [Go](https://go.dev)
+* [Make](https://www.gnu.org/software/make/)
+* [Docker](https://www.docker.com/) (Optional: build docker image)
+
+### Build binary
+
+In order to build the OTEL Collector executable, just run this command:
+
+```bash
+make all
+```
+
+You will find generated source code and the binary in the `build` path.
+
+### Build docker image
+
+To create a docker image compatible with official OpenTelemetry images,
+run this command:
+
+```bash
+IMAGE_NAME=occamshub-otelcol make image
+```
+
+You can change the image name to whatever you want.
 
 ## Useful links
 
