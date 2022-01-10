@@ -1,7 +1,29 @@
 # Grype Receiver
 
-This receiver scans filesystem for vulnerabilities using [grype](https://github.com/anchore/grype),
-to add to your metrics pipeline.
+[Grype](https://github.com/anchore/grype) is an _Open Source_ vulnerability scanner
+for container images and filesystems written in _Go_. It works with [Syft](https://github.com/anchore/syft),
+the powerful SBOM tool.
+
+The receiver produces metrics data containing found vulnerabilities with these attributes:
+
+* Package ID
+* Package Name
+* Package Version
+* Package Language
+* Package PURL
+* Package Type
+* Package Locations
+* Vulnerability ID
+* Vulnerability Namespace
+* Vulnerability Severity
+* Vulnerability Data Source
+* Vulnerability Description
+
+Let's see an example output:
+
+```txt
+
+```
 
 ## Configuration
 

@@ -28,6 +28,7 @@ import (
 	"github.com/anchore/grype/grype/pkg"
 	"github.com/anchore/grype/grype/vulnerability"
 	"github.com/anchore/stereoscope/pkg/image"
+	"github.com/anchore/syft/syft/pkg/cataloger"
 	"github.com/anchore/syft/syft/source"
 	"go.opentelemetry.io/collector/component"
 	"go.opentelemetry.io/collector/model/pdata"
@@ -76,9 +77,15 @@ func (g *grypeScraper) Scrape(ctx context.Context) (pdata.Metrics, error) {
 		return pdata.Metrics{}, err
 	}
 
+	providerConfig := pkg.ProviderConfig{
+		RegistryOptions:   &image.RegistryOptions{},
+		Exclusions:        g.cfg.Exclude,
+		CatalogingOptions: cataloger.DefaultConfig(),
+	}
+
 	matches := match.NewMatches()
 	for _, in := range g.cfg.Include {
-		packages, con, err := pkg.Provide(fmt.Sprintf("dir:%v", in), source.UnknownScope, &image.RegistryOptions{})
+		packages, con, err := pkg.Provide(fmt.Sprintf("dir:%v", in), providerConfig)
 		if err != nil {
 			g.logger.Error(err.Error())
 			return pdata.Metrics{}, err

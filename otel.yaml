@@ -1,6 +1,9 @@
 receivers:
   grype:
-    include: [ /opt ]
+    include:
+      - /opt
+    exclude:
+      - "**/*.log"
     collection_interval: 10m
 
 processors:

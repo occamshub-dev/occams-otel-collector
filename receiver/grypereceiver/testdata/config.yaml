@@ -1,6 +1,9 @@
 receivers:
   grype:
-    include: [ /opt ]
+    include:
+      - /opt
+    exclude:
+      - "**/*.log"
 
 processors:
   nop:

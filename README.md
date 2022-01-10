@@ -22,10 +22,12 @@ page and download the latest version.
 ## Configuration
 
 We provide a [sample configuration file](otel.yaml) for reference. If you want to
-know more about how to configure the __Collector__, please, visit [Collector Docs](https://opentelemetry.io/docs/collector/).
+know more about how to configure the __Collector__, please, visit 
+[Collector Docs](https://opentelemetry.io/docs/collector/).
 
-If you want to see all configuration options for __Occamshub__ components, please go
-to [Components](#Components)
+If you want to see complete configuration options for specific __Occamshub__ component, you can
+find it under [Receivers](#Receivers), [Processors](#Processors) or [Exporters](#Exporters)
+section.
 
 ## Run
 
@@ -36,17 +38,20 @@ example below.
 ./occamshub-otel-distr --config otel.yaml
 ```
 
-## Components
 
-### Receivers
+## Receivers
 
- * [Grype](receiver/grypereceiver) (`metrics`), vulnerability scanner.
+### Grype
 
-### Processors
+[Grype](https://github.com/anchore/grype) is an _Open Source_ vulnerability scanner
+for container images and filesystems written in _Go_. It works with [Syft](https://github.com/anchore/syft),
+the powerful SBOM tool.
+
+## Processors
 
  > No processors yet
 
-### Exporters
+## Exporters
 
  > No exporters yet
 

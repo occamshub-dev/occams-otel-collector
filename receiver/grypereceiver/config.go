@@ -19,4 +19,5 @@ import "go.opentelemetry.io/collector/receiver/scraperhelper"
 type Config struct {
 	scraperhelper.ScraperControllerSettings `mapstructure:",squash"`
 	Include                                 []string `mapstructure:"include"`
+	Exclude                                 []string `mapstructure:"exclude"`
 }
