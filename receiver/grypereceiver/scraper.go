@@ -65,7 +65,7 @@ func (g *grypeScraper) Start(ctx context.Context, host component.Host) error {
 	g.dbConf = db.Config{
 		DBRootDir:           path.Join("/tmp/", "grype", "db"),
 		ListingURL:          GrypeUpdateURL,
-		ValidateByHashOnGet: false,
+		ValidateByHashOnGet: true,
 	}
 	return nil
 }

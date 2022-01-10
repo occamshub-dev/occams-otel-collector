@@ -16,6 +16,7 @@ package grypereceiver
 
 import (
 	"context"
+	"errors"
 	"time"
 
 	"go.opentelemetry.io/collector/component"
@@ -25,13 +26,7 @@ import (
 	"go.opentelemetry.io/collector/receiver/scraperhelper"
 )
 
-const (
-	typeStr = "grype"
-)
-
-var (
-	defaultInclude = []string{"/"}
-)
+const typeStr = "grype"
 
 // NewFactory creates a factory for Grype receiver.
 func NewFactory() component.ReceiverFactory {
@@ -47,7 +42,7 @@ func createDefaultConfig() config.Receiver {
 			ReceiverSettings:   config.NewReceiverSettings(config.NewComponentID(typeStr)),
 			CollectionInterval: 24 * time.Hour,
 		},
-		Include: defaultInclude,
+		Include: make([]string, 0),
 	}
 }
 
@@ -58,6 +53,9 @@ func createMetricsReceiver(
 	consumer consumer.Metrics,
 ) (component.MetricsReceiver, error) {
 	cfg := rConf.(*Config)
+	if cfg.Include == nil || len(cfg.Include) == 0 {
+		return nil, errors.New("grype missing required fields: `include`")
+	}
 
 	var ns = newGrypeScraper(params.Logger, cfg)
 	scraper, err := scraperhelper.NewScraper(typeStr, ns.Scrape, scraperhelper.WithStart(ns.Start))

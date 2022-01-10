@@ -32,6 +32,7 @@ func TestScraper(t *testing.T) {
 	err := scraper.Start(context.Background(), componenttest.NewNopHost())
 	require.NoError(t, err)
 
-	_, err = scraper.Scrape(context.Background())
-	require.NoError(t, err)
+	metrics, scrapeErr := scraper.Scrape(context.Background())
+	require.NoError(t, scrapeErr)
+	require.NotNil(t, metrics)
 }
