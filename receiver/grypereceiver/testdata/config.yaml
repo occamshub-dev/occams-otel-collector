@@ -3,7 +3,7 @@ receivers:
     include:
       - /opt
     exclude:
-      - "**/*.log"
+      - "./**/*.log"
 
 processors:
   nop:

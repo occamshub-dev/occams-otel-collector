@@ -23,7 +23,10 @@ import (
 )
 
 func TestScraper(t *testing.T) {
-	cfg := &Config{Include: []string{"testdata/libs"}}
+	cfg := &Config{
+		Include: []string{"testdata/libs"},
+		Exclude: []string{"**/*.json"},
+	}
 	scraper := newGrypeScraper(zap.NewNop(), cfg)
 
 	err := scraper.Start(context.Background(), componenttest.NewNopHost())

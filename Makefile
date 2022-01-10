@@ -10,7 +10,7 @@ clean:
 
 .PHONY: deps
 deps:
-	@GO111MODULE=on go install go.opentelemetry.io/collector/cmd/builder@latest
+	@GO111MODULE=on go install go.opentelemetry.io/collector/cmd/builder@v0.41.0
 
 .PHONY: build
 build: deps

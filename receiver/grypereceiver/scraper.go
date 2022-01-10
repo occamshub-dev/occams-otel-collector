@@ -77,14 +77,13 @@ func (g *grypeScraper) Scrape(ctx context.Context) (pdata.Metrics, error) {
 		return pdata.Metrics{}, err
 	}
 
-	providerConfig := pkg.ProviderConfig{
-		RegistryOptions:   &image.RegistryOptions{},
-		Exclusions:        g.cfg.Exclude,
-		CatalogingOptions: cataloger.DefaultConfig(),
-	}
-
 	matches := match.NewMatches()
 	for _, in := range g.cfg.Include {
+		providerConfig := pkg.ProviderConfig{
+			RegistryOptions:   &image.RegistryOptions{},
+			Exclusions:        g.cfg.Exclude,
+			CatalogingOptions: cataloger.DefaultConfig(),
+		}
 		packages, con, err := pkg.Provide(fmt.Sprintf("dir:%v", in), providerConfig)
 		if err != nil {
 			g.logger.Error(err.Error())
