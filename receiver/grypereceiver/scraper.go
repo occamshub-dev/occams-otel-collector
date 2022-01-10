@@ -79,9 +79,11 @@ func (g *grypeScraper) Scrape(ctx context.Context) (pdata.Metrics, error) {
 
 	matches := match.NewMatches()
 	for _, in := range g.cfg.Include {
+		excludes := make([]string, len(g.cfg.Exclude))
+		copy(excludes, g.cfg.Exclude)
 		providerConfig := pkg.ProviderConfig{
 			RegistryOptions:   &image.RegistryOptions{},
-			Exclusions:        g.cfg.Exclude,
+			Exclusions:        excludes,
 			CatalogingOptions: cataloger.DefaultConfig(),
 		}
 		packages, con, err := pkg.Provide(fmt.Sprintf("dir:%v", in), providerConfig)
