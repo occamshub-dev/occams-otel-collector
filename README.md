@@ -14,34 +14,14 @@ other users too.
 
 It also contains the essential tools and files to build the Occamshub distribution.
 
-## Download
+## List of components
 
-To download the binary, please go to [Releases](https://github.com/occamshub-dev/occamshub-otel-distr/releases)
-page and download the latest version.
-
-## Configuration
-
-We provide a [sample configuration file](otel.yaml) for reference. If you want to
-know more about how to configure the __Collector__, please, visit 
-[Collector Docs](https://opentelemetry.io/docs/collector/).
-
-If you want to see complete configuration options for specific __Occamshub__ component, you can
-find it under [Receivers](#Receivers), [Processors](#Processors) or [Exporters](#Exporters)
-section.
-
-## Run
-
-To start the collector, just provide the configuration file as a parameter, as in the
-example below.
-
-```bash
-./occamshub-otel-distr --config otel.yaml
-```
-
+ * Receivers
+   * [grype](receiver/grypereceiver) (vulnerability scanner)
 
 ## Receivers
 
-### [Grype](receiver/grypereceiver)
+### Grype
 
 [Grype](https://github.com/anchore/grype) is an _Open Source_ vulnerability scanner
 for container images and filesystems written in _Go_. It works with [Syft](https://github.com/anchore/syft),
@@ -87,6 +67,32 @@ IMAGE_NAME=occamshub-otelcol make image
 ```
 
 You can change the image name to whatever you want.
+
+## Usage
+
+### Download
+
+To download the binary, please go to [Releases](https://github.com/occamshub-dev/occamshub-otel-distr/releases)
+page and download the latest version.
+
+### Configuration
+
+We provide a [sample configuration file](otel.yaml) for reference. If you want to
+know more about how to configure the __Collector__, please, visit
+[Collector Docs](https://opentelemetry.io/docs/collector/).
+
+If you want to see complete configuration options for specific __Occamshub__ component, you can
+find it under [Receivers](#Receivers), [Processors](#Processors) or [Exporters](#Exporters)
+section.
+
+### Run
+
+To start the collector, just provide the configuration file as a parameter, as in the
+example below.
+
+```bash
+./occamshub-otel-distr --config otel.yaml
+```
 
 ## Useful links
 
