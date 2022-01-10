@@ -41,7 +41,7 @@ example below.
 
 ## Receivers
 
-### Grype
+### [Grype](receiver/grypereceiver)
 
 [Grype](https://github.com/anchore/grype) is an _Open Source_ vulnerability scanner
 for container images and filesystems written in _Go_. It works with [Syft](https://github.com/anchore/syft),
