@@ -1,20 +1,35 @@
 dist:
-  otelcol_version: "0.41.0"
+  otelcol_version: "0.42.0"
   name: occamshub-otel-distr
   description: "Occamshub's OpenTelemetry Collector distribution"
 receivers:
+  # Core
+  - import: go.opentelemetry.io/collector/receiver/otlpreceiver
+    gomod: go.opentelemetry.io/collector v0.42.0
   # Contrib
-  - gomod: "github.com/open-telemetry/opentelemetry-collector-contrib/receiver/filelogreceiver v0.41.0"
-  - gomod: "github.com/open-telemetry/opentelemetry-collector-contrib/receiver/prometheusreceiver v0.41.0"
-  - gomod: "github.com/open-telemetry/opentelemetry-collector-contrib/receiver/hostmetricsreceiver v0.41.0"
-  - gomod: "github.com/open-telemetry/opentelemetry-collector-contrib/receiver/dockerstatsreceiver v0.41.0"
+  - gomod: "github.com/open-telemetry/opentelemetry-collector-contrib/receiver/filelogreceiver v0.42.0"
+  - gomod: "github.com/open-telemetry/opentelemetry-collector-contrib/receiver/prometheusreceiver v0.42.0"
+  - gomod: "github.com/open-telemetry/opentelemetry-collector-contrib/receiver/hostmetricsreceiver v0.42.0"
+  - gomod: "github.com/open-telemetry/opentelemetry-collector-contrib/receiver/dockerstatsreceiver v0.42.0"
   # Occamshub
-  - gomod: "github.com/occamshub-dev/occamshub-otel-distr/receiver/grypereceiver v0.1.4"
+  - gomod: "github.com/occamshub-dev/occamshub-otel-distr/receiver/grypereceiver latest"
 processors:
+  # Core
+  - import: go.opentelemetry.io/collector/processor/batchprocessor
+    gomod: go.opentelemetry.io/collector v0.42.0
+  - import: go.opentelemetry.io/collector/processor/memorylimiterprocessor
+    gomod: go.opentelemetry.io/collector v0.42.0
   # Contrib
-  - gomod: "github.com/open-telemetry/opentelemetry-collector-contrib/processor/attributesprocessor v0.41.0"
-  - gomod: "github.com/open-telemetry/opentelemetry-collector-contrib/processor/resourcedetectionprocessor v0.41.0"
+  - gomod: "github.com/open-telemetry/opentelemetry-collector-contrib/processor/attributesprocessor v0.42.0"
+  - gomod: "github.com/open-telemetry/opentelemetry-collector-contrib/processor/resourcedetectionprocessor v0.42.0"
 exporters:
+  # Core
+  - import: go.opentelemetry.io/collector/exporter/loggingexporter
+    gomod: go.opentelemetry.io/collector v0.42.0
+  - import: go.opentelemetry.io/collector/exporter/otlpexporter
+    gomod: go.opentelemetry.io/collector v0.42.0
+  - import: go.opentelemetry.io/collector/exporter/otlphttpexporter
+    gomod: go.opentelemetry.io/collector v0.42.0
   # Contrib
-  - gomod: "github.com/open-telemetry/opentelemetry-collector-contrib/exporter/fileexporter v0.41.0"
-  - gomod: "github.com/open-telemetry/opentelemetry-collector-contrib/exporter/kafkaexporter v0.41.0"
+  - gomod: "github.com/open-telemetry/opentelemetry-collector-contrib/exporter/fileexporter v0.42.0"
+  - gomod: "github.com/open-telemetry/opentelemetry-collector-contrib/exporter/kafkaexporter v0.42.0"
