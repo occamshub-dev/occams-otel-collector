@@ -14,25 +14,39 @@ other users too.
 
 It also contains the essential tools and files to build the Occamshub distribution.
 
-## List of components
+## Built-in components
 
- * Receivers
-   * [grype](receiver/grypereceiver) (vulnerability scanner)
+| Receiver                                | Processor                            | Exporter                |
+|-----------------------------------------|--------------------------------------|-------------------------|
+| otlpreceiver (core)                     | batchprocessor (core)                | loggingexporter (core)  |
+| prometheusreceiver (contrib)            | memorylimiterprocessor (core)        | otlpexporter (core)     |
+| hostmetricsreceiver (contrib)           | attributesprocessor (contrib)        | otlphttpexporter (core) |
+| dockerstatsreceiver (contrib)           | resourcedetectionprocessor (contrib) | fileexporter (contrib)  |
+| filelogreceiver (contrib)               |                                      | kafkaexporter (contrib) |
+| [grypereceiver](receiver/grypereceiver) |                                      |                         |
 
-## Components
+### Core components
 
-### Grype
+* [OTLP Receiver](https://github.com/open-telemetry/opentelemetry-collector/tree/main/receiver/otlpreceiver)
+* ...
+
+### Contrib components
+
+* [Prometheus Receiver](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/prometheusreceiver)
+* ...
+
+### Grype receiver
 
 [Grype receiver](receiver/grypereceiver) integrates [Grype](https://github.com/anchore/grype),
 an _Open Source_ vulnerability scanner for container images and filesystems written in _Go_.
 It works with [Syft](https://github.com/anchore/syft), the powerful SBOM tool.
 
-## Usage
+## Getting started
 
 ### Download
 
 To download the binary, please go to [Releases](https://github.com/occamshub-dev/occamshub-otel-distr/releases)
-page and download the latest version.
+page and download the latest version for your OS and architecture.
 
 ### Configuration
 
@@ -41,7 +55,7 @@ know more about how to configure the __Collector__, please, visit
 [Collector Docs](https://opentelemetry.io/docs/collector/).
 
 If you want to see complete configuration options for specific __Occamshub__ component, you can
-find it under [Receivers](#Receivers), [Processors](#Processors) or [Exporters](#Exporters)
+find it under [Receivers](receiver), [Processors](processor) or [Exporters](exporter)
 section.
 
 ### Run
@@ -50,14 +64,13 @@ To start the collector, just provide the configuration file as a parameter, as i
 example below.
 
 ```bash
-./occamshub-otel-distr --config otel.yaml
+./occamscol_linux_x86_64 --config otel.yaml
 ```
 
-## Build your own
+## Build
 
 See [otelcol-builder.yaml](otelcol-builder.yaml) file to know which components are
-included by default. If you want to include or exclude other components, edit the
-file and rebuild the distribution.
+included by default. If you want to include or exclude components, edit this file.
 
 ### Pre-requisites
 
@@ -65,7 +78,7 @@ file and rebuild the distribution.
 * [Make](https://www.gnu.org/software/make/)
 * [Docker](https://www.docker.com/) (Optional: build docker image)
 
-### Build binary
+### Compile
 
 In order to build the OTEL Collector executable, just run this command:
 
@@ -87,6 +100,14 @@ IMAGE_NAME=occamshub-otelcol make image
 You can change the image name to whatever you want.
 
 ## Useful links
+
+### Occamshub
+
+* [Occamshub website](https://occamshub.com)
+* [Occamshub blog](https://blog.occamshub.com)
+* [Slack](https://occamshub.slack.com)
+
+### External links
 
 * [OpenTelemetry Collector @ github.com](https://github.com/open-telemetry/opentelemetry-collector)
 * [OpenTelemetry Collector Contrib @ github.com](https://github.com/open-telemetry/opentelemetry-collector-contrib)
