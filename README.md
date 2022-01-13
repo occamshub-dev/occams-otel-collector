@@ -1,29 +1,46 @@
 # Occamshub OpenTelemetry Collector distribution
 
-![Occamshub logo](assets/otel_occams_hub_black_horizontal.png)
+![Occamshub logo](assets/otel_occams_hub_black_horizontal.png "OpenTelemetry + Occamshub")
 
 ## Overview
 
-An __OpenTelemetry__ distribution,  not to be confused with a fork, is customized
-version of an __OpenTelemetry__ component. A distribution is a wrapper around an
-upstream __OpenTelemetry__ repository with some customizations.
+Occamshub OpenTelemetry Collector distribution (_OTEL Collector_), is an Occamshub
+version of the upstream __OTEL Collector__ to send telemetry data, Metrics, Logs and
+Trances, to supported backends.
 
-This is a repository for these customizations. These contributions are
-specifically developed for __Occamshub__ use cases and could be useful to 
-other users too.
+**What is the OTEL Collector?**
 
-It also contains the essential tools and files to build the Occamshub distribution.
+_OTEL Collector_ is a vendor-agnostic implementation to receive, process and export
+telemetry data. It removes the need to maintain multiple agents/collectors, and
+it can act as an agent or a collector.
+
+![OTEL Collector](assets/otel-col.png "OTEL Collector overview")
+*[OTEL Collector figure](https://github.com/open-telemetry/opentelemetry.io/blob/main/iconography/Otel_Collector.svg) by [OpenTelemetry](https://opentelemetry.io/) is licensed under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/)*
+
+**What is an OTEL Collector distribution?**
+
+An __OTEL Collector__ distribution, not to be confused with a fork, is a customized
+version of the __OTEL Collector__ . A distribution is a wrapper around
+upstream __OTEL Collector__ repositories with some custom components added.
+
+![OTEL Collector](assets/occams-otel-col.png "OTEL Collector overview")
+*OTEL Collector can be extended without touching core code*
 
 ## Built-in components
 
-| Receiver                                | Processor                            | Exporter                |
-|-----------------------------------------|--------------------------------------|-------------------------|
-| otlpreceiver (core)                     | batchprocessor (core)                | loggingexporter (core)  |
-| prometheusreceiver (contrib)            | memorylimiterprocessor (core)        | otlpexporter (core)     |
-| hostmetricsreceiver (contrib)           | attributesprocessor (contrib)        | otlphttpexporter (core) |
-| dockerstatsreceiver (contrib)           | resourcedetectionprocessor (contrib) | fileexporter (contrib)  |
-| filelogreceiver (contrib)               |                                      | kafkaexporter (contrib) |
-| [grypereceiver](receiver/grypereceiver) |                                      |                         |
+This is the list for the included components of the distribution, referencing their
+upstream repositories:
+
+| Receiver                                | Processor                            | Exporter                 |
+|-----------------------------------------|--------------------------------------|--------------------------|
+| otlpreceiver (core)                     | batchprocessor (core)                | loggingexporter (core)   |
+| prometheusreceiver (contrib)            | memorylimiterprocessor (core)        | otlpexporter (core)      |
+| hostmetricsreceiver (contrib)           | attributesprocessor (contrib)        | otlphttpexporter (core)  |
+| dockerstatsreceiver (contrib)           | resourcedetectionprocessor (contrib) | fileexporter (contrib)   |
+| filelogreceiver (contrib)               |                                      | kafkaexporter (contrib)  |
+| jaegerreceiver (contrib)                |                                      |                          |
+| zipkinreceiver (contrib)                |                                      |                          |
+| [grypereceiver](receiver/grypereceiver) |                                      |                          |
 
 ### Core components
 
@@ -33,6 +50,8 @@ It also contains the essential tools and files to build the Occamshub distributi
 * [Logging Exporter](https://github.com/open-telemetry/opentelemetry-collector/tree/main/exporter/loggingexporter)
 * [OTLP Exporter](https://github.com/open-telemetry/opentelemetry-collector/tree/main/exporter/otlpexporter)
 * [OTLP HTTP Exporter](https://github.com/open-telemetry/opentelemetry-collector/tree/main/exporter/otlphttpexporter)
+* [Jaeger Receiver](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/jaegerreceiver)
+* [Zipkin Receiver](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/zipkinreceiver)
 
 ### Contrib components
 
@@ -45,30 +64,33 @@ It also contains the essential tools and files to build the Occamshub distributi
 * [File Exporter](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/exporter/fileexporter)
 * [Kafka Exporter](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/exporter/kafkaexporter)
 
-### Grype receiver
+### Custom components
 
-[Grype receiver](receiver/grypereceiver) integrates [Grype](https://github.com/anchore/grype),
-an _Open Source_ vulnerability scanner for container images and filesystems written in _Go_.
-It works with [Syft](https://github.com/anchore/syft), the powerful SBOM tool.
+* [Grype Receiver](receiver/grypereceiver). Periodically scans filesystem path/s for vulnerabilities using
+  [Grype](https://github.com/anchore/grype), an _Open Source_ vulnerability scanner for container images and 
+  filesystems written in _Go_. It acts as a scrapper, so there is no more input than the configuration.
 
-## Getting started
+## Usage
 
-### Download
+__Occamshub OTEL Collector distribution__ is meant to be used as an agent to collect your
+telemetry data and export it to your preferred backend using any built-in exporter.
 
-To download the binary, please go to [Releases](https://github.com/occamshub-dev/occamshub-otel-distr/releases)
-page and download the latest version for your OS and architecture.
+**Download**
 
-### Configuration
+To download the binary release, please go to [Releases](https://github.com/occamshub-dev/occamshub-otel-distr/releases)
+page and download the latest version for OS and architecture of your choice.
 
-We provide a [sample configuration file](otel.yaml) for reference. If you want to
-know more about how to configure the __Collector__, please, visit
-[Collector Docs](https://opentelemetry.io/docs/collector/).
+**Configuration**
+
+Configuration is set using a YAML file, as in any other _OTEL Collector_ distribution.
+This settings file will define the data pipelines and the components used on those
+pipelines. A sample config file [otel.yaml](otel.yaml) is also provided for reference
+and testing purposes.
 
 If you want to see complete configuration options for specific __Occamshub__ component, you can
-find it under [Receivers](receiver), [Processors](processor) or [Exporters](exporter)
-section.
+find it under [Receivers](receiver), Processors or Exporters sections.
 
-### Run
+**Run**
 
 To start the collector, just provide the configuration file as a parameter, as in the
 example below.
@@ -82,13 +104,13 @@ example below.
 See [otelcol-builder.yaml](otelcol-builder.yaml) file to know which components are
 included by default. If you want to include or exclude components, edit this file.
 
-### Pre-requisites
+**Pre-requisites**
 
 * [Go](https://go.dev)
 * [Make](https://www.gnu.org/software/make/)
 * [Docker](https://www.docker.com/) (Optional: build docker image)
 
-### Compile
+**Compile**
 
 In order to build the OTEL Collector executable, just run this command:
 
@@ -98,7 +120,7 @@ make all
 
 You will find generated source code and the binary in the `build` path.
 
-### Build docker image
+**Build docker image**
 
 To create a docker image compatible with official OpenTelemetry images,
 run this command:

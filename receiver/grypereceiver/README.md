@@ -1,10 +1,24 @@
 # Grype Receiver
 
+The receiver produces metrics data containing found vulnerabilities in a configured path.
+
 [Grype](https://github.com/anchore/grype) is an _Open Source_ vulnerability scanner
 for container images and filesystems written in _Go_. It works with [Syft](https://github.com/anchore/syft),
 the powerful SBOM tool.
 
-The receiver produces metrics data containing found vulnerabilities with these attributes:
+**Sample configuration**
+
+```yaml
+grype:
+    include:
+      - /opt
+    exclude:
+      - "**/*.log"
+    collection_interval: 12h
+```
+*See the full configuration in [otel.yaml](otel.yaml)*
+
+**Output data**
 
 * Package ID
 * Package Name
@@ -19,8 +33,13 @@ The receiver produces metrics data containing found vulnerabilities with these a
 * Vulnerability Data Source
 * Vulnerability Description
 
-Let's see an example output for Log4Shell (CVE-2021-44228) vuln detected:
+**Example**
 
+Let's see an example output when the receiver detects the Log4Shell (CVE-2021-44228)
+vulnerability.
+
+Metric points are wrapped into OTEL protol data structure, so first, we can see data
+that comes from the collector or provided by a processor.
 ```txt
 ResourceMetrics #0
 Resource SchemaURL: https://opentelemetry.io/schemas/v1.5.0
@@ -30,6 +49,11 @@ Resource labels:
 InstrumentationLibraryMetrics #0
 InstrumentationLibraryMetrics SchemaURL: 
 InstrumentationLibrary grype/vulnerability 0.1.2
+```
+
+Then, we can see metric points including data about the vulnerability.
+
+```txt
 Metric #0
 Descriptor:
      -> Name: vulnerability
@@ -57,6 +81,9 @@ StartTimestamp: 1970-01-01 00:00:00 +0000 UTC
 Timestamp: 2022-01-10 09:18:02.115157407 +0000 UTC
 Value: 1
 ```
+
+Please, take a look to [OTEL Metrics Proto](https://github.com/open-telemetry/opentelemetry-proto/blob/main/opentelemetry/proto/metrics/v1/metrics.proto)
+to fully understand the data schema.
 
 ## Configuration
 

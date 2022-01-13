@@ -18,7 +18,7 @@ build: deps
 	@CGO_ENABLED=0 builder --config otelcol-builder.yaml --output-path=./cmd/occamscol --skip-compilation --module github.com/occamshub-dev/occamshub-otel-distr/cmd/occamscol
 	cd ./cmd/occamscol && GOOS=linux GOARCH=amd64 $(GOBUILD) -o ./build/linux/occamscol_linux_x86_64
 	cd ./cmd/occamscol && GOOS=linux GOARCH=arm64 $(GOBUILD) -o ./build/linux/occamscol_linux_arm64
-	cd ./cmd/occamscol && GOOS=darwin GOARCH=amd64 $(GOBUILD) -o ./build/darwin/occamscol_darwin_amd64
+	cd ./cmd/occamscol && GOOS=darwin GOARCH=amd64 $(GOBUILD) -o ./build/darwin/occamscol_darwin_x86_64
 	cd ./cmd/occamscol && GOOS=darwin GOARCH=arm64 $(GOBUILD) -o ./build/darwin/occamscol_darwin_arm64
 	cd ./cmd/occamscol && GOOS=windows GOARCH=amd64 EXTENSION=.exe $(GOBUILD) -o ./build/windows/occamscol_windows_amd64
 
