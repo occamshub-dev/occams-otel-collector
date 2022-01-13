@@ -6,7 +6,7 @@
 
 Occamshub OpenTelemetry Collector distribution (_OTEL Collector_), is an Occamshub
 version of the upstream __OTEL Collector__ to send telemetry data, Metrics, Logs and
-Trances, to supported backends.
+Trances to supported backends.
 
 **What is the OTEL Collector?**
 
@@ -15,7 +15,7 @@ telemetry data. It removes the need to maintain multiple agents/collectors, and
 it can act as an agent or a collector.
 
 ![OTEL Collector](assets/otel-col.png "OTEL Collector overview")
-*[OTEL Collector figure](https://github.com/open-telemetry/opentelemetry.io/blob/main/iconography/Otel_Collector.svg) by [OpenTelemetry](https://opentelemetry.io/) is licensed under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/)*
+*fig.1: [OTEL Collector figure](https://github.com/open-telemetry/opentelemetry.io/blob/main/iconography/Otel_Collector.svg) by [OpenTelemetry](https://opentelemetry.io/) is licensed under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/)*
 
 **What is an OTEL Collector distribution?**
 
@@ -23,8 +23,11 @@ An __OTEL Collector__ distribution, not to be confused with a fork, is a customi
 version of the __OTEL Collector__ . A distribution is a wrapper around
 upstream __OTEL Collector__ repositories with some custom components added.
 
+Here is a figure _(fig.2)_ that illustrates how this repository is extending the
+__OTEL Collector__ in general terms.
+
 ![OTEL Collector](assets/occams-otel-col.png "OTEL Collector overview")
-*OTEL Collector can be extended without touching core code*
+*fig.2: OTEL Collector can be extended without touching core code*
 
 ## Built-in components
 
@@ -101,10 +104,10 @@ example below.
 
 ## Build
 
-See [otelcol-builder.yaml](otelcol-builder.yaml) file to know which components are
-included by default. If you want to include or exclude components, edit this file.
+This section is for developers. Users looking to simply run the _OTEL Collector_ 
+should check out [Usage](#Usage) section.
 
-**Pre-requisites**
+**Dependencies**
 
 * [Go](https://go.dev)
 * [Make](https://www.gnu.org/software/make/)
@@ -126,10 +129,27 @@ To create a docker image compatible with official OpenTelemetry images,
 run this command:
 
 ```bash
-IMAGE_NAME=occamshub-otelcol make image
+IMAGE_NAME=occamshub-otelcol make docker-build
+```
+You can change the image name to whatever you want.
+
+**Customize**
+
+Checkout [otelcol-builder.yaml](otelcol-builder.yaml) file to know which components are
+included by default. If you want to include or exclude components, edit this file and
+run this command:
+
+```bash
+make regen build
 ```
 
-You can change the image name to whatever you want.
+In case you want to change some Occamshub component, you will need to add some replaces
+as this at the end of the [otelcol-builder.yaml)](otelcol-builder.yaml) file:
+
+```yaml
+replaces:
+  - github.com/occamshub-dev/occamshub-otel-distr/receiver/grypereceiver => receiver/grypereceiver
+```
 
 ## Useful links
 
