@@ -118,25 +118,27 @@ should check out [Usage](#Usage) section.
 In order to build the OTEL Collector executable, just run this command:
 
 ```bash
-make all
+make build
 ```
 
-You will find generated source code and the binary in the `build` path.
+You will find the binaries under the `build` path.
 
-**Build docker image**
-
-To create a docker image compatible with official OpenTelemetry images,
-run this command:
-
-```bash
-IMAGE_NAME=occamshub-otelcol make docker-build
+```txt
+build/
+├── darwin
+│   ├── occamscol_darwin_arm64
+│   └── occamscol_darwin_x86_64
+├── linux
+│   ├── occamscol_linux_arm64
+│   └── occamscol_linux_x86_64
+└── windows
+    └── occamscol_windows_amd64
 ```
-You can change the image name to whatever you want.
 
 **Customize**
 
 Checkout [otelcol-builder.yaml](otelcol-builder.yaml) file to know which components are
-included by default. If you want to include or exclude components, edit this file and
+built-in by default. If you want to include or exclude components, edit this file and
 run this command:
 
 ```bash
@@ -151,13 +153,23 @@ replaces:
   - github.com/occamshub-dev/occamshub-otel-distr/receiver/grypereceiver => ./receiver/grypereceiver
 ```
 
+**Build docker image**
+
+To create a docker image compatible with official OpenTelemetry images,
+run this command:
+
+```bash
+IMAGE_NAME=occamshub-otelcol make docker-build
+```
+You can change the image name to whatever you want.
+
 ## Useful links
 
 ### Occamshub
 
-* [Occamshub website](https://occamshub.com)
-* [Occamshub blog](https://blog.occamshub.com)
-* [Slack](https://occamshub.slack.com)
+* [Occamshub Website](https://occamshub.com)
+* [Occamshub Blog](https://blog.occamshub.com)
+* [Occamshub Slack](https://occamshub.slack.com)
 
 ### External links
 
