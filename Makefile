@@ -16,9 +16,11 @@ deps:
 
 .PHONY: regen
 regen: deps
+	@ln -s ../../receiver ./cmd/occamscol/receiver
 	@CGO_ENABLED=0 builder --config otelcol-builder.yaml --output-path=./cmd/occamscol --skip-compilation --module $(GOMOD)
 	@mv ./cmd/occamscol/go.mod .
 	@mv ./cmd/occamscol/go.sum .
+	@rm ./cmd/occamscol/receiver
 
 .PHONY: build
 build:
