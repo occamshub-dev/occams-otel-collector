@@ -148,7 +148,7 @@ as this at the end of the [otelcol-builder.yaml)](otelcol-builder.yaml) file:
 
 ```yaml
 replaces:
-  - github.com/occamshub-dev/occamshub-otel-distr/receiver/grypereceiver => receiver/grypereceiver
+  - github.com/occamshub-dev/occamshub-otel-distr/receiver/grypereceiver => ./receiver/grypereceiver
 ```
 
 ## Useful links
