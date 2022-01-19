@@ -19,7 +19,7 @@ it can act as an agent or a collector.
 
 ## Customizing OTEL Collector
 
-The __OHI OTEL Collector distribution__, is a customized version of the __OTEL Collector__. The 
+The __Occamshub OTEL Collector distribution__ (Occams Collector), is a customized version of the __OTEL Collector__. The 
 distribution is a wrapper around upstream __OTEL Collector__ core and contrib repositories with
 some custom components added. These custom components can be added without changing the core
 code (fig. 2).
@@ -27,7 +27,7 @@ code (fig. 2).
 ![OTEL Collector](assets/occams-otel-col.png "OTEL Collector overview")
 *fig.2: Illustrates how OTEL Collector can be extended without touching core code*
 
-## OHI OTEL Collector distribution built-in components
+## Occamshub Collector built-in components
 
 This is the list for the included components in this distribution, referencing their
 upstream repositories:
@@ -41,9 +41,9 @@ upstream repositories:
 | [filelogreceiver](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/filelogreceiver) (contrib)         |                                                                                                                                                          | [kafkaexporter](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/exporter/kafkaexporter) (contrib) |
 | [jaegerreceiver](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/jaegerreceiver) (contrib)           |                                                                                                                                                          |                                                                                                                               |
 | [zipkinreceiver](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/zipkinreceiver) (contrib)           |                                                                                                                                                          |                                                                                                                               |
-| [grypereceiver](receiver/grypereceiver) (OHI custom)                                                                                      |                                                                                                                                                          |                                                                                                                               |
+| [grypereceiver](receiver/grypereceiver) (Occamshub custom)                                                                                |                                                                                                                                                          |                                                                                                                               |
 
-### Custom components
+### Occams Collector custom components
 
 * [Grype Receiver](receiver/grypereceiver). Periodically scans filesystem path/s for vulnerabilities using
   [Grype](https://github.com/anchore/grype), an _Open Source_ vulnerability scanner for container images and 
@@ -51,7 +51,7 @@ upstream repositories:
 
 ## Usage
 
-__Occamshub OTEL Collector distribution__ is meant to be used as an agent to collect your
+__Occamshub Collector__ is meant to be used as an agent to collect your
 telemetry data and export it to your preferred backend using any built-in exporter.
 
 **Download**
