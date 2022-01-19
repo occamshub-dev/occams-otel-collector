@@ -17,9 +17,9 @@ it can act as an agent or a collector.
 ![OTEL Collector](assets/otel-col.png "OTEL Collector overview")
 *fig.1: [OTEL Collector figure](https://github.com/open-telemetry/opentelemetry.io/blob/main/iconography/Otel_Collector.svg) by [OpenTelemetry](https://opentelemetry.io/) is licensed under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/)*
 
-## Customizing OTEL Collector
+## Occamshub's customization OTEL Collector
 
-The __Occamshub OTEL Collector distribution__ (Occams Collector), is a customized version of the __OTEL Collector__. The 
+The __Occamshub OTEL Collector distribution__ (__Occams Collector__), is a customized version of the __OTEL Collector__. The 
 distribution is a wrapper around upstream __OTEL Collector__ core and contrib repositories with
 some custom components added. These custom components can be added without changing the core
 code (fig. 2).
