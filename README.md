@@ -27,7 +27,7 @@ code (fig. 2).
 ![OTEL Collector](assets/occams-otel-col.png "OTEL Collector overview")
 *fig.2: Illustrates how OTEL Collector can be extended without touching core code*
 
-## Occamshub Collector built-in components
+## Occams Collector built-in components
 
 This is the list for the included components in this distribution, referencing their
 upstream repositories:
@@ -51,7 +51,7 @@ upstream repositories:
 
 ## Usage
 
-__Occamshub Collector__ is meant to be used as an agent to collect your
+__Occams Collector__ is meant to be used as an agent to collect your
 telemetry data and export it to your preferred backend using any built-in exporter.
 
 **Download**
