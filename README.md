@@ -155,6 +155,8 @@ You can change the image name to whatever you want.
 ## Future
 
 * Add `.deb` and `.rpm` packages.
+* Add CI/CD pipeline.
+* Serve docker images for pulling.
 
 ## License
 
