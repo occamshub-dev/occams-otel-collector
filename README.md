@@ -152,6 +152,10 @@ You can change the image name to whatever you want.
 * [OpenTelemetry Collector @ github.com](https://github.com/open-telemetry/opentelemetry-collector)
 * [OpenTelemetry Collector Contrib @ github.com](https://github.com/open-telemetry/opentelemetry-collector-contrib)
 
+## Future
+
+* Add `.deb` and `.rpm` packages.
+
 ## License
 
 ```txt
