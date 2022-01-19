@@ -1,10 +1,10 @@
-# Occamshub OpenTelemetry Collector distribution
+# OccamsHub OpenTelemetry Collector distribution
 
-![Occamshub logo](assets/otel_occams_hub_black_horizontal.png "OpenTelemetry + Occamshub")
+![OccamsHub logo](assets/otel_occams_hub_black_horizontal.png "OpenTelemetry + OccamsHub")
 
 ## Overview
 
-Occamshub OpenTelemetry Collector distribution, is an Occamshub
+OccamsHub OpenTelemetry Collector distribution, is an OccamsHub
 version of the upstream __OTEL Collector__ to send telemetry data, Metrics, Logs and
 Trances to supported backends which includes core, contrib and custom components.
 
@@ -17,9 +17,9 @@ it can act as an agent or a collector.
 ![OTEL Collector](assets/otel-col.png "OTEL Collector overview")
 *fig.1: [OTEL Collector figure](https://github.com/open-telemetry/opentelemetry.io/blob/main/iconography/Otel_Collector.svg) by [OpenTelemetry](https://opentelemetry.io/) is licensed under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/)*
 
-## Occamshub's customization OTEL Collector
+## OccamsHub's customization OTEL Collector
 
-The __Occamshub OTEL Collector distribution__ (__Occams Collector__), is a customized version of the __OTEL Collector__. The 
+The __OccamsHub OTEL Collector distribution__ (__Occams Collector__), is a customized version of the __OTEL Collector__. The 
 distribution is a wrapper around upstream __OTEL Collector__ core and contrib repositories with
 some custom components added. These custom components can be added without changing the core
 code (fig. 2).
@@ -41,7 +41,7 @@ upstream repositories:
 | [filelogreceiver](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/filelogreceiver) (contrib)         |                                                                                                                                                          | [kafkaexporter](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/exporter/kafkaexporter) (contrib) |
 | [jaegerreceiver](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/jaegerreceiver) (contrib)           |                                                                                                                                                          |                                                                                                                               |
 | [zipkinreceiver](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/zipkinreceiver) (contrib)           |                                                                                                                                                          |                                                                                                                               |
-| [grypereceiver](receiver/grypereceiver) (Occamshub custom)                                                                                |                                                                                                                                                          |                                                                                                                               |
+| [grypereceiver](receiver/grypereceiver) (OccamsHub custom)                                                                                |                                                                                                                                                          |                                                                                                                               |
 
 ### Occams Collector custom components
 
@@ -66,7 +66,7 @@ This settings file will define the data pipelines and the components used on tho
 pipelines. A sample config file [otel.yaml](otel.yaml) is also provided for reference
 and testing purposes.
 
-If you want to see complete configuration options for specific __Occamshub__ component, you can
+If you want to see complete configuration options for specific __OccamsHub__ component, you can
 find it under [Receivers](receiver), Processors or Exporters sections.
 
 **Run**
@@ -121,7 +121,7 @@ run this command:
 make regen build
 ```
 
-In case you want to change some Occamshub component, you will need to add some replaces
+In case you want to change some OccamsHub component, you will need to add some replaces
 as this at the end of the [otelcol-builder.yaml)](otelcol-builder.yaml) file:
 
 ```yaml
@@ -141,11 +141,11 @@ You can change the image name to whatever you want.
 
 ## Useful links
 
-### Occamshub
+### OccamsHub
 
-* [Occamshub Website](https://occamshub.com)
-* [Occamshub Blog](https://blog.occamshub.com)
-* [Occamshub Slack](https://occamshub.slack.com)
+* [OccamsHub Website](https://occamshub.com)
+* [OccamsHub Blog](https://blog.occamshub.com)
+* [OccamsHub Slack](https://occamshub.slack.com)
 
 ### External links
 
@@ -161,7 +161,7 @@ You can change the image name to whatever you want.
 ## License
 
 ```txt
-Copyright 2021 Occamshub Inc
+Copyright 2021 OccamsHub Inc
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
