@@ -4,9 +4,9 @@
 
 ## Overview
 
-Occamshub OpenTelemetry Collector distribution (_OTEL Collector_), is an Occamshub
+Occamshub OpenTelemetry Collector distribution, is an Occamshub
 version of the upstream __OTEL Collector__ to send telemetry data, Metrics, Logs and
-Trances to supported backends.
+Trances to supported backends which includes core, contrib and custom components.
 
 **What is the OTEL Collector?**
 
@@ -17,55 +17,31 @@ it can act as an agent or a collector.
 ![OTEL Collector](assets/otel-col.png "OTEL Collector overview")
 *fig.1: [OTEL Collector figure](https://github.com/open-telemetry/opentelemetry.io/blob/main/iconography/Otel_Collector.svg) by [OpenTelemetry](https://opentelemetry.io/) is licensed under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/)*
 
-**What is an OTEL Collector distribution?**
+## Customizing OTEL Collector
 
-An __OTEL Collector__ distribution, not to be confused with a fork, is a customized
-version of the __OTEL Collector__ . A distribution is a wrapper around
-upstream __OTEL Collector__ repositories with some custom components added.
-
-Here is a figure _(fig.2)_ that illustrates how this repository is extending the
-__OTEL Collector__ in general terms.
+The __OHI OTEL Collector distribution__, is a customized version of the __OTEL Collector__. The 
+distribution is a wrapper around upstream __OTEL Collector__ core and contrib repositories with
+some custom components added. These custom components can be added without changing the core
+code (fig. 2).
 
 ![OTEL Collector](assets/occams-otel-col.png "OTEL Collector overview")
-*fig.2: OTEL Collector can be extended without touching core code*
+*fig.2: Illustrates how OTEL Collector can be extended without touching core code*
 
-## Built-in components
+## OHI OTEL Collector distribution built-in components
 
-This is the list for the included components of the distribution, referencing their
+This is the list for the included components in this distribution, referencing their
 upstream repositories:
 
-| Receiver                                | Processor                            | Exporter                 |
-|-----------------------------------------|--------------------------------------|--------------------------|
-| otlpreceiver (core)                     | batchprocessor (core)                | loggingexporter (core)   |
-| prometheusreceiver (contrib)            | memorylimiterprocessor (core)        | otlpexporter (core)      |
-| hostmetricsreceiver (contrib)           | attributesprocessor (contrib)        | otlphttpexporter (core)  |
-| dockerstatsreceiver (contrib)           | resourcedetectionprocessor (contrib) | fileexporter (contrib)   |
-| filelogreceiver (contrib)               |                                      | kafkaexporter (contrib)  |
-| jaegerreceiver (contrib)                |                                      |                          |
-| zipkinreceiver (contrib)                |                                      |                          |
-| [grypereceiver](receiver/grypereceiver) |                                      |                          |
-
-### Core components
-
-* [OTLP Receiver](https://github.com/open-telemetry/opentelemetry-collector/tree/main/receiver/otlpreceiver)
-* [Batch Processor](https://github.com/open-telemetry/opentelemetry-collector/tree/main/processor/batchprocessor)
-* [Memory limiter Processor](https://github.com/open-telemetry/opentelemetry-collector/tree/main/processor/memorylimiterprocessor)
-* [Logging Exporter](https://github.com/open-telemetry/opentelemetry-collector/tree/main/exporter/loggingexporter)
-* [OTLP Exporter](https://github.com/open-telemetry/opentelemetry-collector/tree/main/exporter/otlpexporter)
-* [OTLP HTTP Exporter](https://github.com/open-telemetry/opentelemetry-collector/tree/main/exporter/otlphttpexporter)
-* [Jaeger Receiver](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/jaegerreceiver)
-* [Zipkin Receiver](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/zipkinreceiver)
-
-### Contrib components
-
-* [Prometheus Receiver](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/prometheusreceiver)
-* [Host metrics Recevier](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/hostmetricsreceiver)
-* [Docker stats Receiver](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/dockerstatsreceiver)
-* [File log Receiver](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/filelogreceiver)
-* [Attributes Processor](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/attributesprocessor)
-* [Resource detection Processor](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/resourcedetectionprocessor)
-* [File Exporter](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/exporter/fileexporter)
-* [Kafka Exporter](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/exporter/kafkaexporter)
+| Receiver                                                                                                                                  | Processor                                                                                                                                                | Exporter                                                                                                                      |
+|-------------------------------------------------------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------|
+| [otlpreceiver](https://github.com/open-telemetry/opentelemetry-collector/tree/main/receiver/otlpreceiver) otlpreceiver (core)             | [batchprocessor](https://github.com/open-telemetry/opentelemetry-collector/tree/main/processor/batchprocessor) (core)                                    | [loggingexporter](https://github.com/open-telemetry/opentelemetry-collector/tree/main/exporter/loggingexporter) (core)        |
+| [prometheusreceiver](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/prometheusreceiver) (contrib)   | [memorylimiterprocessor](https://github.com/open-telemetry/opentelemetry-collector/tree/main/processor/memorylimiterprocessor) (core)                    | [otlpexporter](https://github.com/open-telemetry/opentelemetry-collector/tree/main/exporter/otlpexporter)  (core)             |
+| [hostmetricsrecevier](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/hostmetricsreceiver) (contrib) | [attributesprocessor](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/attributesprocessor) (contrib)               | [otlphttpexporter](https://github.com/open-telemetry/opentelemetry-collector/tree/main/exporter/otlphttpexporter) (core)      |
+| [dockerstatsreceiver](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/dockerstatsreceiver) (contrib) | [resourcedetectionprocessor](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/resourcedetectionprocessor) (contrib) | [fileexporter](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/exporter/fileexporter) (contrib)   |
+| [filelogreceiver](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/filelogreceiver) (contrib)         |                                                                                                                                                          | [kafkaexporter](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/exporter/kafkaexporter) (contrib) |
+| [jaegerreceiver](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/jaegerreceiver) (contrib)           |                                                                                                                                                          |                                                                                                                               |
+| [zipkinreceiver](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/zipkinreceiver) (contrib)           |                                                                                                                                                          |                                                                                                                               |
+| [grypereceiver](receiver/grypereceiver) (OHI custom)                                                                                      |                                                                                                                                                          |                                                                                                                               |
 
 ### Custom components
 
