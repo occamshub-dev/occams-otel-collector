@@ -1,12 +1,12 @@
-# OccamsHub OpenTelemetry Collector distribution
+# Occams Collector
 
 ![OccamsHub logo](assets/otel_occams_hub_black_horizontal.png "OpenTelemetry + OccamsHub")
 
 ## Overview
 
-OccamsHub OpenTelemetry Collector distribution, is an OccamsHub
+Occams Collector, is an OccamsHub
 version of the upstream __OTEL Collector__ to send telemetry data, Metrics, Logs and
-Trances to supported backends which includes core, contrib and custom components.
+Tranes to supported backends which includes core, contrib and custom components.
 
 **What is the OTEL Collector?**
 
