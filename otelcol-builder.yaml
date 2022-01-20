@@ -2,6 +2,12 @@ dist:
   otelcol_version: "0.42.0"
   name: occamscol
   description: "Occamshub's OpenTelemetry Collector distribution"
+extensions:
+  # Core
+  - import: go.opentelemetry.io/collector/extension/ballastextension
+    gomod: go.opentelemetry.io/collector v0.42.0
+  - import: go.opentelemetry.io/collector/extension/zpagesextension
+    gomod: go.opentelemetry.io/collector v0.42.0
 receivers:
   # Core
   - import: go.opentelemetry.io/collector/receiver/otlpreceiver
@@ -34,4 +40,7 @@ exporters:
     gomod: go.opentelemetry.io/collector v0.42.0
   # Contrib
   - gomod: "github.com/open-telemetry/opentelemetry-collector-contrib/exporter/fileexporter v0.42.0"
+  - gomod: "github.com/open-telemetry/opentelemetry-collector-contrib/exporter/prometheusexporter v0.42.0"
+  - gomod: "github.com/open-telemetry/opentelemetry-collector-contrib/exporter/jaegerexporter v0.42.0"
+  - gomod: "github.com/open-telemetry/opentelemetry-collector-contrib/exporter/zipkinexporter v0.42.0"
   - gomod: "github.com/open-telemetry/opentelemetry-collector-contrib/exporter/kafkaexporter v0.42.0"

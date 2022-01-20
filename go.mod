@@ -7,7 +7,10 @@ go 1.17
 require (
 	github.com/occamshub-dev/occamshub-otel-distr/receiver/grypereceiver v0.1.5
 	github.com/open-telemetry/opentelemetry-collector-contrib/exporter/fileexporter v0.42.0
+	github.com/open-telemetry/opentelemetry-collector-contrib/exporter/jaegerexporter v0.42.0
 	github.com/open-telemetry/opentelemetry-collector-contrib/exporter/kafkaexporter v0.42.0
+	github.com/open-telemetry/opentelemetry-collector-contrib/exporter/prometheusexporter v0.42.0
+	github.com/open-telemetry/opentelemetry-collector-contrib/exporter/zipkinexporter v0.42.0
 	github.com/open-telemetry/opentelemetry-collector-contrib/processor/attributesprocessor v0.42.0
 	github.com/open-telemetry/opentelemetry-collector-contrib/processor/resourcedetectionprocessor v0.42.0
 	github.com/open-telemetry/opentelemetry-collector-contrib/receiver/dockerstatsreceiver v0.42.0
@@ -163,6 +166,7 @@ require (
 	github.com/open-telemetry/opentelemetry-collector-contrib/internal/docker v0.42.0 // indirect
 	github.com/open-telemetry/opentelemetry-collector-contrib/internal/sharedcomponent v0.42.0 // indirect
 	github.com/open-telemetry/opentelemetry-collector-contrib/internal/stanza v0.42.0 // indirect
+	github.com/open-telemetry/opentelemetry-collector-contrib/pkg/resourcetotelemetry v0.42.0 // indirect
 	github.com/open-telemetry/opentelemetry-collector-contrib/pkg/translator/jaeger v0.42.0 // indirect
 	github.com/open-telemetry/opentelemetry-collector-contrib/pkg/translator/opencensus v0.42.0 // indirect
 	github.com/open-telemetry/opentelemetry-collector-contrib/pkg/translator/zipkin v0.42.0 // indirect
