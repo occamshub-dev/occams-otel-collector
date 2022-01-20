@@ -12,7 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-module github.com/occamshub-dev/occamshub-otel-distr/receiver/grypereceiver
+module github.com/occamshub-dev/occams-otel-collector/receiver/grypereceiver
 
 go 1.17
 

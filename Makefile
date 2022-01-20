@@ -1,7 +1,7 @@
 SHELL := /bin/bash
-IMAGE_NAME ?= occamshub/occamshub-otel-distr
+IMAGE_NAME ?= occamshub/occams-otel-collector
 GOBUILD = GO111MODULE=on CGO_ENABLED=0 installsuffix=cgo go build -trimpath
-GOMOD ?= github.com/occamshub-dev/occamshub-otel-distr
+GOMOD ?= github.com/occamshub-dev/occams-otel-collector
 
 .PHONY: all
 all: build

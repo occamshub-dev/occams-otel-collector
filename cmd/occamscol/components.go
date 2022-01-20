@@ -25,7 +25,7 @@ import (
 	dockerstatsreceiver "github.com/open-telemetry/opentelemetry-collector-contrib/receiver/dockerstatsreceiver"
 	jaegerreceiver "github.com/open-telemetry/opentelemetry-collector-contrib/receiver/jaegerreceiver"
 	zipkinreceiver "github.com/open-telemetry/opentelemetry-collector-contrib/receiver/zipkinreceiver"
-	grypereceiver "github.com/occamshub-dev/occamshub-otel-distr/receiver/grypereceiver"
+	grypereceiver "github.com/occamshub-dev/occams-otel-collector/receiver/grypereceiver"
 )
 
 func components() (component.Factories, error) {

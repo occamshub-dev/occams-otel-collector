@@ -1861,8 +1861,8 @@ github.com/observiq/ctimefmt v1.0.0 h1:r7vTJ+Slkrt9fZ67mkf+mA6zAdR5nGIJRMTzkUyvi
 github.com/observiq/ctimefmt v1.0.0/go.mod h1:mxi62//WbSpG/roCO1c6MqZ7zQTvjVtYheqHN3eOjvc=
 github.com/observiq/go-syslog/v3 v3.0.2 h1:vaeINFErM/E3cKE2Ot1FAhhGq5mv7uGBOzjnGL3qhbY=
 github.com/observiq/nanojack v0.0.0-20201106172433-343928847ebc h1:49ewVBwLcy+eYqI4R0ICilCI4dPjddpFXWv3liXzUxM=
-github.com/occamshub-dev/occamshub-otel-distr/receiver/grypereceiver v0.1.5 h1:3VsCW/5CcD0WDV1ss51Mgaxu4vo29YgxIHEQdTW4bqI=
-github.com/occamshub-dev/occamshub-otel-distr/receiver/grypereceiver v0.1.5/go.mod h1:J72798aUkXI+cQ+tJm3zKeYTAIx1hrcMMaZo4bw3UEE=
+github.com/occamshub-dev/occams-otel-collector/receiver/grypereceiver v0.2.0 h1:hdJOcdfZPmKnJzK9UB1M7k+B7s0dj14eOxcqsPkHrmk=
+github.com/occamshub-dev/occams-otel-collector/receiver/grypereceiver v0.2.0/go.mod h1:trAuG44hKpgIDL4D9JCP9dadUpuCMogjlONaS7OXCsw=
 github.com/oklog/oklog v0.3.2 h1:wVfs8F+in6nTBMkA7CbRw+zZMIB7nNM825cM1wuzoTk=
 github.com/oklog/oklog v0.3.2/go.mod h1:FCV+B7mhrz4o+ueLpx+KqkyXRGMWOYEvfiXtdGtbWGs=
 github.com/oklog/run v1.0.0/go.mod h1:dlhp/R75TPv97u0XWUtDeV/lRKWPKSdTuV0TZvrmrQA=

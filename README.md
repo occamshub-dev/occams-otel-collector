@@ -1,33 +1,32 @@
-# Occams Collector
+# Occams OTel Collector
 
 ![OccamsHub logo](assets/otel_occams_hub_black_horizontal.png "OpenTelemetry + OccamsHub")
 
 ## Overview
 
-Occams Collector, is an OccamsHub
-version of the upstream __OTEL Collector__ to send telemetry data, Metrics, Logs and
-Tranes to supported backends which includes core, contrib and custom components.
+Occams OTel Collector, is an OccamsHub version of the upstream __OTel Collector__ (short for __OpenTelemetry Collector__) to
+send telemetry data, Metrics, Logs and Traces to supported backends which includes core, contrib and custom components.
 
-**What is the OTEL Collector?**
+**What is the OTel Collector?**
 
-_OTEL Collector_ is a vendor-agnostic implementation to receive, process and export
+[_Otel Collector_](https://github.com/open-telemetry/opentelemetry-collector) is a vendor-agnostic implementation to receive, process and export
 telemetry data. It removes the need to maintain multiple agents/collectors, and
 it can act as an agent or a collector.
 
-![OTEL Collector](assets/otel-col.png "OTEL Collector overview")
+![OTel Collector](assets/otel-col.png "OTEL Collector overview")
 *fig.1: [OTEL Collector figure](https://github.com/open-telemetry/opentelemetry.io/blob/main/iconography/Otel_Collector.svg) by [OpenTelemetry](https://opentelemetry.io/) is licensed under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/)*
 
-## OccamsHub's customization of OTEL Collector
+## OccamsHub's customization of OTel Collector
 
-The __OccamsHub OTEL Collector distribution__ (__Occams Collector__), is a customized version of the __OTEL Collector__. The 
-distribution is a wrapper around upstream __OTEL Collector__ core and contrib repositories with
+The __OccamsHub OTel Collector distribution__ (__Occams OTel Collector__), is a customized version of the __OTEL Collector__. The 
+distribution is a wrapper around upstream __OTel Collector__ core and contrib repositories with
 some custom components added. These custom components can be added without changing the core
 code (fig. 2).
 
-![OTEL Collector](assets/occams-otel-col.png "OTEL Collector overview")
-*fig.2: Illustrates how OTEL Collector can be extended without touching core code*
+![OTel Collector](assets/occams-otel-col.png "OTel Collector overview")
+*fig.2: Illustrates how OTel Collector can be extended without touching core code*
 
-## Occams Collector built-in components
+## Occams OTel Collector built-in components
 
 This is the list for the included components in this distribution, referencing their
 upstream repositories:
@@ -43,7 +42,7 @@ upstream repositories:
 | [zipkinreceiver](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/zipkinreceiver) (contrib)           |                                                                                                                                                          | [jaegerexporter](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/exporter/jaegerexporter) (contrib)         |
 | [grypereceiver](receiver/grypereceiver) (OccamsHub custom)                                                                                |                                                                                                                                                          | [zipkinexporter](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/exporter/zipkinexporter) (contrib)         |
 
-### Occams Collector custom components
+### Occams OTel Collector custom components
 
 * [Grype Receiver](receiver/grypereceiver). Periodically scans filesystem path/s for vulnerabilities using
   [Grype](https://github.com/anchore/grype), an _Open Source_ vulnerability scanner for container images and 
@@ -51,17 +50,17 @@ upstream repositories:
 
 ## Usage
 
-__Occams Collector__ is meant to be used as an agent to collect your
+__Occams OTel Collector__ is meant to be used as an agent to collect your
 telemetry data and export it to your preferred backend using any built-in exporter.
 
 **Download**
 
-To download the binary release, please go to [Releases](https://github.com/occamshub-dev/occamshub-otel-distr/releases)
+To download the binary release, please go to [Releases](https://github.com/occamshub-dev/occams-otel-collector/releases)
 page and download the latest version for OS and architecture of your choice.
 
 **Configuration**
 
-Configuration is set using a YAML file, as in any other _OTEL Collector_ distribution.
+Configuration is set using a YAML file, as in any other _OTel Collector_ distribution.
 This settings file will define the data pipelines and the components used on those
 pipelines. A sample config file [otel.yaml](otel.yaml) is also provided for reference
 and testing purposes.
@@ -80,7 +79,7 @@ example below.
 
 ## Build
 
-This section is for developers. Users looking to simply run the _OTEL Collector_ 
+This section is for developers. Users looking to simply run the _OTel Collector_ 
 should check out [Usage](#Usage) section.
 
 **Dependencies**
@@ -91,7 +90,7 @@ should check out [Usage](#Usage) section.
 
 **Compile**
 
-In order to build the OTEL Collector executable, just run this command:
+In order to build the OTel Collector executable, just run this command:
 
 ```bash
 make build
@@ -126,7 +125,7 @@ as this at the end of the [otelcol-builder.yaml)](otelcol-builder.yaml) file:
 
 ```yaml
 replaces:
-  - github.com/occamshub-dev/occamshub-otel-distr/receiver/grypereceiver => ./receiver/grypereceiver
+  - github.com/occamshub-dev/occams-otel-collector/receiver/grypereceiver => ./receiver/grypereceiver
 ```
 
 **Build docker image**
