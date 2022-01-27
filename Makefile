@@ -14,6 +14,12 @@ clean:
 deps:
 	@GO111MODULE=on go install go.opentelemetry.io/collector/cmd/builder@v0.42.0
 
+.PHONY: vulns
+vulns:
+	@go get github.com/opencontainers/runc@v1.0.3
+	@go get github.com/nats-io/nats-server/v2@v2.2.0
+	@go get github.com/buger/jsonparser@v1.0.0
+
 .PHONY: regen
 regen: deps
 	@ln -s ../../receiver ./cmd/occamscol/receiver
@@ -23,7 +29,7 @@ regen: deps
 	@rm ./cmd/occamscol/receiver
 
 .PHONY: build
-build:
+build: vulns
 	GOOS=linux GOARCH=amd64 $(GOBUILD) -o ./build/linux/occamscol_linux_x86_64 ./cmd/occamscol
 	GOOS=linux GOARCH=arm64 $(GOBUILD) -o ./build/linux/occamscol_linux_arm64 ./cmd/occamscol
 	GOOS=darwin GOARCH=amd64 $(GOBUILD) -o ./build/darwin/occamscol_darwin_x86_64 ./cmd/occamscol
