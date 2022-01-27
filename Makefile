@@ -9,16 +9,18 @@ all: build
 .PHONY: clean
 clean:
 	@rm -rf cmd/occamscol/*
+	@rm -rf build/*
 
 .PHONY: deps
 deps:
-	@GO111MODULE=on go install go.opentelemetry.io/collector/cmd/builder@v0.42.0
+	@GO111MODULE=on go install go.opentelemetry.io/collector/cmd/builder@v0.43.0
 
 .PHONY: vulns
 vulns:
-	@go get github.com/opencontainers/runc@v1.0.3
-	@go get github.com/nats-io/nats-server/v2@v2.2.0
-	@go get github.com/buger/jsonparser@v1.0.0
+	@go get -d github.com/opencontainers/runc@v1.0.3
+	@go get -d github.com/nats-io/nats-server/v2@v2.2.0
+	@go get -d github.com/buger/jsonparser@v1.0.0
+	@go mod tidy
 
 .PHONY: regen
 regen: deps
@@ -34,7 +36,12 @@ build: vulns
 	GOOS=linux GOARCH=arm64 $(GOBUILD) -o ./build/linux/occamscol_linux_arm64 ./cmd/occamscol
 	GOOS=darwin GOARCH=amd64 $(GOBUILD) -o ./build/darwin/occamscol_darwin_x86_64 ./cmd/occamscol
 	GOOS=darwin GOARCH=arm64 $(GOBUILD) -o ./build/darwin/occamscol_darwin_arm64 ./cmd/occamscol
-	GOOS=windows GOARCH=amd64 EXTENSION=.exe $(GOBUILD) -o ./build/windows/occamscol_windows_amd64 ./cmd/occamscol
+	GOOS=windows GOARCH=amd64 EXTENSION=.exe $(GOBUILD) -o ./build/windows/occamscol_windows_amd64.exe ./cmd/occamscol
+	@md5sum ./build/linux/occamscol_linux_x86_64 > ./build/checksums.txt
+	@md5sum ./build/linux/occamscol_linux_arm64 >> ./build/checksums.txt
+	@md5sum ./build/darwin/occamscol_darwin_x86_64 >> ./build/checksums.txt
+	@md5sum ./build/darwin/occamscol_darwin_arm64 >> ./build/checksums.txt
+	@md5sum ./build/windows/occamscol_windows_amd64.exe >> ./build/checksums.txt
 
 .PHONY: docker-build
 docker-build: build
