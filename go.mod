@@ -5,7 +5,7 @@ module github.com/occamshub-dev/occams-otel-collector
 go 1.17
 
 require (
-	github.com/occamshub-dev/occams-otel-collector/receiver/grypereceiver v0.2.0
+	github.com/occamshub-dev/occams-otel-collector/receiver/grypereceiver v0.2.1
 	github.com/open-telemetry/opentelemetry-collector-contrib/exporter/fileexporter v0.42.0
 	github.com/open-telemetry/opentelemetry-collector-contrib/exporter/jaegerexporter v0.42.0
 	github.com/open-telemetry/opentelemetry-collector-contrib/exporter/kafkaexporter v0.42.0
@@ -41,15 +41,15 @@ require (
 	github.com/Microsoft/go-winio v0.5.1 // indirect
 	github.com/Shopify/sarama v1.30.1 // indirect
 	github.com/Showmax/go-fqdn v1.0.0 // indirect
+	github.com/acobaugh/osrelease v0.1.0 // indirect
 	github.com/alecthomas/units v0.0.0-20210208195552-ff826a37aa15 // indirect
 	github.com/alicebob/sqlittle v1.4.0 // indirect
 	github.com/anchore/go-rpmdb v0.0.0-20210914181456-a9c52348da63 // indirect
 	github.com/anchore/go-version v1.2.2-0.20210903204242-51efa5b487c4 // indirect
-	github.com/anchore/grype v0.30.0 // indirect
-	github.com/anchore/grype-db v0.0.0-20211207213615-1bcbb779ee96 // indirect
+	github.com/anchore/grype v0.32.0 // indirect
 	github.com/anchore/packageurl-go v0.0.0-20210922164639-b3fa992ebd29 // indirect
-	github.com/anchore/stereoscope v0.0.0-20211222141827-6e663afeef5d // indirect
-	github.com/anchore/syft v0.35.0 // indirect
+	github.com/anchore/stereoscope v0.0.0-20220110181730-c91cf94a3718 // indirect
+	github.com/anchore/syft v0.36.0 // indirect
 	github.com/andybalholm/brotli v1.0.4 // indirect
 	github.com/antonmedv/expr v1.9.0 // indirect
 	github.com/apache/thrift v0.15.0 // indirect
