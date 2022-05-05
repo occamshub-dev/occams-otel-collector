@@ -17,6 +17,9 @@ deps:
 
 .PHONY: vulns
 vulns:
+	@go get -d github.com/docker/distribution@v2.8.0
+	@go get -d github.com/containerd/containerd@v1.5.10
+	@go get -d github.com/hashicorp/go-getter@v1.5.11
 	@go get -d github.com/opencontainers/runc@v1.0.3
 	@go get -d github.com/nats-io/nats-server/v2@v2.2.0
 	@go get -d github.com/buger/jsonparser@v1.0.0
