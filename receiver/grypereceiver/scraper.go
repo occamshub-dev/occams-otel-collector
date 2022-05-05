@@ -17,7 +17,6 @@ package grypereceiver
 import (
 	"context"
 	"fmt"
-	"go.uber.org/zap"
 	"path"
 	"strings"
 	"time"
@@ -25,6 +24,7 @@ import (
 	"github.com/anchore/grype/grype"
 	"github.com/anchore/grype/grype/db"
 	"github.com/anchore/grype/grype/match"
+	"github.com/anchore/grype/grype/matcher"
 	"github.com/anchore/grype/grype/pkg"
 	"github.com/anchore/grype/grype/vulnerability"
 	"github.com/anchore/stereoscope/pkg/image"
@@ -32,6 +32,7 @@ import (
 	"github.com/anchore/syft/syft/source"
 	"go.opentelemetry.io/collector/component"
 	"go.opentelemetry.io/collector/model/pdata"
+	"go.uber.org/zap"
 )
 
 const (
@@ -91,7 +92,8 @@ func (g *grypeScraper) Scrape(ctx context.Context) (pdata.Metrics, error) {
 			g.logger.Error(err.Error())
 			return pdata.Metrics{}, err
 		}
-		allMatches := grype.FindVulnerabilitiesForPackage(g.provider, con.Distro, packages...)
+		matchers := matcher.NewDefaultMatchers(matcher.Config{})
+		allMatches := grype.FindVulnerabilitiesForPackage(g.provider, con.Distro, matchers, packages)
 		g.logger.Info(fmt.Sprintf("Found %v vulnerabilities in dir:%v", allMatches.Count(), in))
 		matches.Merge(allMatches)
 	}
@@ -193,7 +195,7 @@ func (g *grypeScraper) copyMatchToLabels(
 	labels.Insert("package.licences", pdata.NewAttributeValueString(strings.Join(match.Package.Licenses, ",")))
 	labels.Insert("package.purl", pdata.NewAttributeValueString(match.Package.PURL))
 	labels.Insert("package.type", pdata.NewAttributeValueString(match.Package.Type.PackageURLType()))
-	labels.Insert("package.locations", pdata.NewAttributeValueString(strings.Join(g.getLocations(match.Package.Locations), ",")))
+	labels.Insert("package.locations", pdata.NewAttributeValueString(strings.Join(g.getLocations(match.Package.Locations.ToSlice()), ",")))
 	labels.Insert("vulnerability.id", pdata.NewAttributeValueString(match.Vulnerability.ID))
 	labels.Insert("vulnerability.namespace", pdata.NewAttributeValueString(match.Vulnerability.Namespace))
 }

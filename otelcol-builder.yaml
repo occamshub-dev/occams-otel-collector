@@ -1,46 +1,62 @@
 dist:
-  otelcol_version: "0.43.1"
+  otelcol_version: "0.46.0"
   name: occamscol
   description: "Occamshub's OpenTelemetry Collector distribution"
 extensions:
   # Core
   - import: go.opentelemetry.io/collector/extension/ballastextension
-    gomod: go.opentelemetry.io/collector v0.43.1
+    gomod: go.opentelemetry.io/collector v0.46.0
   - import: go.opentelemetry.io/collector/extension/zpagesextension
-    gomod: go.opentelemetry.io/collector v0.43.1
+    gomod: go.opentelemetry.io/collector v0.46.0
 receivers:
   # Core
   - import: go.opentelemetry.io/collector/receiver/otlpreceiver
-    gomod: go.opentelemetry.io/collector v0.43.1
+    gomod: go.opentelemetry.io/collector v0.46.0
   # Contrib
-  - gomod: "github.com/open-telemetry/opentelemetry-collector-contrib/receiver/filelogreceiver v0.43.0"
-  - gomod: "github.com/open-telemetry/opentelemetry-collector-contrib/receiver/prometheusreceiver v0.43.0"
-  - gomod: "github.com/open-telemetry/opentelemetry-collector-contrib/receiver/hostmetricsreceiver v0.43.0"
-  - gomod: "github.com/open-telemetry/opentelemetry-collector-contrib/receiver/dockerstatsreceiver v0.43.0"
-  - gomod: "github.com/open-telemetry/opentelemetry-collector-contrib/receiver/jaegerreceiver v0.43.0"
-  - gomod: "github.com/open-telemetry/opentelemetry-collector-contrib/receiver/zipkinreceiver v0.43.0"
+  - import: github.com/open-telemetry/opentelemetry-collector-contrib/receiver/filelogreceiver
+    gomod: github.com/open-telemetry/opentelemetry-collector-contrib v0.46.0
+  - import: github.com/open-telemetry/opentelemetry-collector-contrib/receiver/prometheusreceiver
+    gomod: github.com/open-telemetry/opentelemetry-collector-contrib v0.46.0
+  - import: github.com/open-telemetry/opentelemetry-collector-contrib/receiver/hostmetricsreceiver
+    gomod: github.com/open-telemetry/opentelemetry-collector-contrib v0.46.0
+  - import: github.com/open-telemetry/opentelemetry-collector-contrib/receiver/dockerstatsreceiver
+    gomod: github.com/open-telemetry/opentelemetry-collector-contrib v0.46.0
+  - import: github.com/open-telemetry/opentelemetry-collector-contrib/receiver/jaegerreceiver
+    gomod: github.com/open-telemetry/opentelemetry-collector-contrib v0.46.0
+  - import: github.com/open-telemetry/opentelemetry-collector-contrib/receiver/zipkinreceiver
+    gomod: github.com/open-telemetry/opentelemetry-collector-contrib v0.46.0
   # Occamshub
-  - gomod: "github.com/occamshub-dev/occams-otel-collector/receiver/grypereceiver v0.2.2"
+  - import: github.com/occamshub-dev/occams-otel-collector/receiver/grypereceiver
+    gomod: github.com/occamshub-dev/occams-otel-collector v0.2.2
 processors:
   # Core
   - import: go.opentelemetry.io/collector/processor/batchprocessor
-    gomod: go.opentelemetry.io/collector v0.43.1
+    gomod: go.opentelemetry.io/collector v0.46.0
   - import: go.opentelemetry.io/collector/processor/memorylimiterprocessor
-    gomod: go.opentelemetry.io/collector v0.43.1
+    gomod: go.opentelemetry.io/collector v0.46.0
   # Contrib
-  - gomod: "github.com/open-telemetry/opentelemetry-collector-contrib/processor/attributesprocessor v0.43.0"
-  - gomod: "github.com/open-telemetry/opentelemetry-collector-contrib/processor/resourcedetectionprocessor v0.43.0"
+  - import: github.com/open-telemetry/opentelemetry-collector-contrib/processor/attributesprocessor
+    gomod: github.com/open-telemetry/opentelemetry-collector-contrib v0.46.0
+  - import: github.com/open-telemetry/opentelemetry-collector-contrib/processor/resourcedetectionprocessor
+    gomod: github.com/open-telemetry/opentelemetry-collector-contrib v0.46.0
 exporters:
   # Core
   - import: go.opentelemetry.io/collector/exporter/loggingexporter
-    gomod: go.opentelemetry.io/collector v0.43.1
+    gomod: go.opentelemetry.io/collector v0.46.0
   - import: go.opentelemetry.io/collector/exporter/otlpexporter
-    gomod: go.opentelemetry.io/collector v0.43.1
+    gomod: go.opentelemetry.io/collector v0.46.0
   - import: go.opentelemetry.io/collector/exporter/otlphttpexporter
-    gomod: go.opentelemetry.io/collector v0.43.1
+    gomod: go.opentelemetry.io/collector v0.46.0
   # Contrib
-  - gomod: "github.com/open-telemetry/opentelemetry-collector-contrib/exporter/fileexporter v0.43.0"
-  - gomod: "github.com/open-telemetry/opentelemetry-collector-contrib/exporter/prometheusexporter v0.43.0"
-  - gomod: "github.com/open-telemetry/opentelemetry-collector-contrib/exporter/jaegerexporter v0.43.0"
-  - gomod: "github.com/open-telemetry/opentelemetry-collector-contrib/exporter/zipkinexporter v0.43.0"
-  - gomod: "github.com/open-telemetry/opentelemetry-collector-contrib/exporter/kafkaexporter v0.43.0"
+  - import: github.com/open-telemetry/opentelemetry-collector-contrib/exporter/fileexporter
+    gomod: github.com/open-telemetry/opentelemetry-collector-contrib v0.46.0
+  - import: github.com/open-telemetry/opentelemetry-collector-contrib/exporter/prometheusexporter
+    gomod: github.com/open-telemetry/opentelemetry-collector-contrib v0.46.0
+  - import: github.com/open-telemetry/opentelemetry-collector-contrib/exporter/jaegerexporter
+    gomod: github.com/open-telemetry/opentelemetry-collector-contrib v0.46.0
+  - import: github.com/open-telemetry/opentelemetry-collector-contrib/exporter/zipkinexporter
+    gomod: github.com/open-telemetry/opentelemetry-collector-contrib v0.46.0
+  - import: github.com/open-telemetry/opentelemetry-collector-contrib/exporter/kafkaexporter
+    gomod: github.com/open-telemetry/opentelemetry-collector-contrib v0.46.0
+replaces:
+  - github.com/googleapis/gnostic => github.com/google/gnostic v0.5.5

@@ -17,6 +17,9 @@ deps:
 
 .PHONY: vulns
 vulns:
+	@go get -d github.com/docker/distribution@v2.8.0
+	@go get -d github.com/containerd/containerd@v1.5.10
+	@go get -d github.com/hashicorp/go-getter@v1.5.11
 	@go get -d github.com/opencontainers/runc@v1.0.3
 	@go get -d github.com/nats-io/nats-server/v2@v2.2.0
 	@go get -d github.com/buger/jsonparser@v1.0.0
@@ -31,7 +34,7 @@ regen: deps
 	@rm ./cmd/occamscol/receiver
 
 .PHONY: build
-build: vulns
+build:
 	GOOS=linux GOARCH=amd64 $(GOBUILD) -o ./build/linux/occamscol_linux_x86_64 ./cmd/occamscol
 	GOOS=linux GOARCH=arm64 $(GOBUILD) -o ./build/linux/occamscol_linux_arm64 ./cmd/occamscol
 	GOOS=darwin GOARCH=amd64 $(GOBUILD) -o ./build/darwin/occamscol_darwin_x86_64 ./cmd/occamscol
