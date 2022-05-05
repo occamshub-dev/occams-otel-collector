@@ -31,7 +31,7 @@ regen: deps
 	@rm ./cmd/occamscol/receiver
 
 .PHONY: build
-build: vulns
+build:
 	GOOS=linux GOARCH=amd64 $(GOBUILD) -o ./build/linux/occamscol_linux_x86_64 ./cmd/occamscol
 	GOOS=linux GOARCH=arm64 $(GOBUILD) -o ./build/linux/occamscol_linux_arm64 ./cmd/occamscol
 	GOOS=darwin GOARCH=amd64 $(GOBUILD) -o ./build/darwin/occamscol_darwin_x86_64 ./cmd/occamscol
