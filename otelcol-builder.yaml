@@ -27,7 +27,7 @@ receivers:
     gomod: github.com/open-telemetry/opentelemetry-collector-contrib v0.46.0
   # Occamshub
   - import: github.com/occamshub-dev/occams-otel-collector/receiver/grypereceiver
-    gomod: github.com/occamshub-dev/occams-otel-collector v0.2.2
+    gomod: github.com/occamshub-dev/occams-otel-collector v0.2.3
 processors:
   # Core
   - import: go.opentelemetry.io/collector/processor/batchprocessor
