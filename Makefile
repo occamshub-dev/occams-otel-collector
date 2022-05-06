@@ -23,7 +23,7 @@ vulns:
 	@go get -d github.com/opencontainers/runc@v1.0.3
 	@go get -d github.com/nats-io/nats-server/v2@v2.2.0
 	@go get -d github.com/buger/jsonparser@v1.0.0
-	@go mod tidy
+	@go mod tidy -compat=1.17
 
 .PHONY: regen
 regen: deps
