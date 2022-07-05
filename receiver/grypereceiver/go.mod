@@ -16,8 +16,6 @@ module github.com/occamshub-dev/occams-otel-collector/receiver/grypereceiver
 
 go 1.17
 
-exclude go.opentelemetry.io/collector/component/componenttest v0.46.0
-
 require (
 	github.com/anchore/grype v0.40.1
 	github.com/anchore/stereoscope v0.0.0-20220616165231-b0fd10fdee06
