@@ -25,7 +25,7 @@ import (
 	dockerstatsreceiver "github.com/open-telemetry/opentelemetry-collector-contrib/receiver/dockerstatsreceiver"
 	jaegerreceiver "github.com/open-telemetry/opentelemetry-collector-contrib/receiver/jaegerreceiver"
 	zipkinreceiver "github.com/open-telemetry/opentelemetry-collector-contrib/receiver/zipkinreceiver"
-	grypereceiver "github.com/occamshub-dev/occams-otel-collector/receiver/grypereceiver"
+	k8seventsreceiver "github.com/open-telemetry/opentelemetry-collector-contrib/receiver/k8seventsreceiver"
 )
 
 func components() (component.Factories, error) {
@@ -48,7 +48,7 @@ func components() (component.Factories, error) {
 		dockerstatsreceiver.NewFactory(),
 		jaegerreceiver.NewFactory(),
 		zipkinreceiver.NewFactory(),
-		grypereceiver.NewFactory(),
+		k8seventsreceiver.NewFactory(),
 	)
 	if err != nil {
 		return component.Factories{}, err
