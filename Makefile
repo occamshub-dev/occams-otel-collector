@@ -13,7 +13,7 @@ clean:
 
 .PHONY: deps
 deps:
-	@GO111MODULE=on go install go.opentelemetry.io/collector/cmd/builder@v0.63.0
+	@GO111MODULE=on go install go.opentelemetry.io/collector/cmd/builder@v0.69.0
 
 .PHONY: vulns
 vulns:
@@ -48,6 +48,6 @@ build:
 
 .PHONY: docker-build
 docker-build: build
-	@cp ./cmd/occamscol/build/linux/occamscol_linux_x86_64 ./docker/otelcol
+	@cp ./build/linux/occamscol_linux_x86_64 ./docker/otelcol
 	@docker build -t ${IMAGE_NAME} ./docker
 	@rm docker/otelcol
